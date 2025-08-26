@@ -1,0 +1,7 @@
+*.png
+*.jpeg
+*.jpg
+
+*.pdf
+.DS_Store
+*.docx
