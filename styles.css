@@ -7,36 +7,36 @@
 }
 
 * {
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 html,
 body {
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 
 body {
   background: #fff;
   color: var(--ink);
-  font: 17px/1.68 Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif
+  font: 17px/1.68 Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
 
 a {
   color: var(--accent);
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 3px
+  text-underline-offset: 3px;
 }
 
 a:hover {
-  text-decoration-thickness: 2px
+  text-decoration-thickness: 2px;
 }
 
 .wrap {
   max-width: 820px;
   margin: 0 auto;
-  padding: 22px
+  padding: 22px;
 }
 
 header {
@@ -48,13 +48,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px
+  gap: 20px;
 }
 
 .id {
   display: flex;
   align-items: center;
-  gap: 18px
+  gap: 18px;
 }
 
 .seal {
@@ -66,18 +66,18 @@ header {
   font-weight: 700;
   color: var(--accent);
   border: 2px solid var(--accent);
-  background: radial-gradient(circle at 35% 35%, var(--accent-soft), #fff 60%)
+  background: radial-gradient(circle at 35% 35%, var(--accent-soft), #fff 60%);
 }
 
 .title {
   font-size: 22px;
   font-weight: 700;
-  letter-spacing: .2px
+  letter-spacing: 0.2px;
 }
 
 .subtitle {
   color: var(--muted);
-  font-size: 14px
+  font-size: 14px;
 }
 
 .profile-pic {
@@ -90,71 +90,74 @@ header {
 }
 
 nav {
-  margin: 8px 0 0
+  margin: 8px 0 0;
 }
 
 nav a {
   padding: 0 10px;
   border-right: 1px solid var(--rule);
-  text-decoration: none
+  text-decoration: none;
 }
 
 nav a:first-child {
-  padding-left: 0
+  padding-left: 0;
 }
 
 nav a:last-child {
-  border-right: 0
+  border-right: 0;
 }
 
-
 main section {
-  padding: 28px 0
+  padding: 28px 0;
 }
 
 h1,
 h2,
 h3 {
   margin: 0 0 10px;
-  font-weight: 600
+  font-weight: 600;
 }
 
 h1 {
   font-size: 26px;
   font-variant: small-caps;
-  letter-spacing: .5px
+  letter-spacing: 0.5px;
 }
 
 h2 {
   font-size: 21px;
   font-variant: small-caps;
-  letter-spacing: .4px
+  letter-spacing: 0.4px;
 }
 
 h3 {
-  font-size: 17px
+  font-size: 17px;
 }
 
 p {
-  margin: 0 0 12px
+  margin: 0 0 12px;
 }
 
 ul {
-  margin: 0 0 0 20px
+  margin: 0 0 0 20px;
 }
 
 li {
-  margin: 4px 0
+  margin: 4px 0;
 }
-
 
 .orn {
   border: 0;
   height: 10px;
   margin: 20px auto;
   max-width: 820px;
-  background:
-    linear-gradient(to right, transparent, var(--accent) 15%, var(--accent) 85%, transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--accent) 15%,
+    var(--accent) 85%,
+    transparent
+  );
   -webkit-mask: linear-gradient(#000, transparent 60%);
   mask: linear-gradient(#000, transparent 60%);
 }
@@ -163,23 +166,23 @@ li {
   background: var(--accent-soft);
   border: 1px solid var(--rule);
   padding: 14px;
-  border-radius: 10px
+  border-radius: 10px;
 }
 
 .dropcap:first-letter {
   float: left;
   font-size: 3.1em;
-  line-height: .9;
+  line-height: 0.9;
   color: var(--accent);
   font-weight: 700;
-  margin: .05em .16em 0 0
+  margin: 0.05em 0.16em 0 0;
 }
 
 footer {
   border-top: 1px solid var(--rule);
   color: var(--muted);
   font-size: 14px;
-  padding: 18px 0
+  padding: 18px 0;
 }
 
 /* Mobile responsive */
@@ -232,7 +235,6 @@ footer {
     padding: 8px 12px;
     border: 1px solid var(--rule);
     border-radius: 6px;
-    border-right: 1px solid var(--rule);
     text-align: center;
     min-height: 44px;
     display: flex;
@@ -240,10 +242,6 @@ footer {
     justify-content: center;
     flex: 1;
     min-width: calc(50% - 4px);
-  }
-
-  nav a:first-child {
-    padding: 8px 12px;
   }
 
   main section {
@@ -312,4 +310,25 @@ footer {
   h2 {
     font-size: 18px;
   }
+}
+
+.research-interests {
+  background: var(--accent-soft);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 18px;
+}
+
+.research-interests h3 {
+  color: var(--accent);
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-size: 17px;
+}
+
+.research-interests p {
+  color: var(--ink);
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
