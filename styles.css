@@ -57,18 +57,6 @@ header {
   gap: 18px;
 }
 
-.seal {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  color: var(--accent);
-  border: 2px solid var(--accent);
-  background: radial-gradient(circle at 35% 35%, var(--accent-soft), #fff 60%);
-}
-
 .title {
   font-size: 22px;
   font-weight: 700;
@@ -178,11 +166,6 @@ li {
   margin: 0.05em 0.16em 0 0;
 }
 
-.feature-photo {
-  background: var(--accent-soft);
-  border-bottom: 1px solid var(--rule);
-}
-
 .project-card {
   display: flex;
   gap: 26px;
@@ -218,10 +201,15 @@ li {
 
 .interests-grid {
   display: grid;
-  grid-template-columns: minmax(200px, 240px) 1fr;
+  grid-template-columns: minmax(200px, 240px) minmax(0, 1fr);
+  grid-template-areas: "media content";
   gap: 26px;
   align-items: stretch;
   margin-top: 22px;
+}
+
+.interests-media {
+  grid-area: media;
 }
 
 .interests-media img {
@@ -235,6 +223,7 @@ li {
 }
 
 .interests-grid .research-interests {
+  grid-area: content;
   margin: 0;
   padding: 20px 22px;
   display: flex;
@@ -305,23 +294,55 @@ footer {
   }
 
   nav {
-    margin: 12px 0 0;
+    margin: 18px auto 0;
+    padding: 6px 10px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 16px;
+    -webkit-overflow-scrolling: touch;
+    border: 0;
+    background: transparent;
+  }
+
+  nav::before,
+  nav::after {
+    content: "";
+    flex: 0 0 12px;
+  }
+
+  nav::-webkit-scrollbar {
+    display: none;
   }
 
   nav a {
-    padding: 8px 12px;
-    border: 1px solid var(--rule);
-    border-radius: 6px;
+    padding: 4px 0;
+    border: 0;
     text-align: center;
-    min-height: 44px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    flex: 1;
-    min-width: calc(50% - 4px);
+    flex: 0 0 auto;
+    white-space: nowrap;
+    background: transparent;
+    box-shadow: none;
+    font-weight: 600;
+    letter-spacing: 0.15px;
+    scroll-snap-align: center;
+    border-bottom: 2px solid transparent;
+  }
+
+  nav a:hover,
+  nav a:focus-visible {
+    border-bottom-color: var(--accent);
+  }
+
+  nav a:active {
+    border-bottom-color: var(--accent);
+    color: var(--accent);
   }
 
   main section {
@@ -354,35 +375,79 @@ footer {
     margin: 0 0 0 16px;
   }
 
-  .image-card {
-    max-width: 100%;
-  }
-
   .project-card {
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(120px, 40%) minmax(0, 1fr);
+    grid-template-areas:
+      "title title"
+      "desc desc"
+      "media list";
+    gap: 16px 18px;
+    align-items: start;
     text-align: left;
     padding: 22px;
   }
 
-  .project-media img {
-    width: 100%;
-    max-width: 320px;
-    height: auto;
+  .project-content {
+    display: contents;
   }
 
-  .project-content {
+  .project-card h3 {
+    grid-area: title;
+    margin-bottom: 0;
+  }
+
+  .project-card p {
+    grid-area: desc;
+    margin: 0;
+  }
+
+  .project-card ul {
+    grid-area: list;
+    margin-top: 0;
+  }
+
+  .project-media {
+    grid-area: media;
+  }
+
+  .project-media img {
     width: 100%;
+    height: auto;
+    border-width: 3px;
+    max-width: none;
+  }
+
+  .project-card:nth-of-type(2) {
+    grid-template-columns: minmax(0, 1fr) minmax(110px, 40%);
+    grid-template-areas:
+      "title title"
+      "desc desc"
+      "list media";
+  }
+
+  .project-card:nth-of-type(2) .project-media {
+    justify-self: end;
+    align-self: start;
   }
 
   .interests-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(110px, 42%) minmax(0, 1fr);
+    grid-template-areas: "media content";
+    gap: 18px;
+  }
+
+  .interests-media {
+    align-self: start;
   }
 
   .interests-media img {
     max-height: none;
-    max-width: 340px;
-    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    max-width: none;
+    margin: 0;
+    border-width: 3px;
   }
 
   .interests-grid .research-interests {
@@ -413,9 +478,18 @@ footer {
     font-size: 18px;
   }
 
+  nav {
+    gap: 18px;
+    padding: 6px 14px;
+  }
+
+  nav::before,
+  nav::after {
+    flex: 0 0 16px;
+  }
+
   nav a {
-    min-width: 100%;
-    margin-bottom: 4px;
+    padding: 4px 0;
   }
 
   h1 {
@@ -424,6 +498,27 @@ footer {
 
   h2 {
     font-size: 18px;
+  }
+
+  .project-media img {
+    max-width: none;
+  }
+
+  .project-card {
+    grid-template-columns: minmax(110px, 42%) minmax(0, 1fr);
+    gap: 14px 16px;
+  }
+
+  .project-card:nth-of-type(2) {
+    grid-template-columns: minmax(0, 1fr) minmax(110px, 42%);
+    grid-template-areas:
+      "title title"
+      "desc desc"
+      "list media";
+  }
+
+  .interests-media img {
+    max-width: none;
   }
 }
 
